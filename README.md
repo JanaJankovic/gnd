@@ -19,12 +19,11 @@ Make sure you have installed:
 Project is simplified to just front-end and back-end without ML. To start the project follow the steps given below:
 
 - Clone the repository
-- Switch to the branch feri/ztis `git branch feri/ztis`
-- Open command prompt in the root and run set `MONGO_URI=mongodb://127.0.0.1/gnd`
+- Open command prompt in the root and run `set MONGO_URI=mongodb://127.0.0.1/gnd`
 - Before starting the server make sure you have installed following packages
 
 ```
-pip install Flask, Flask-Cors, pymongo, pandas, python-dotenv
+pip install Flask Flask-Cors pymongo pandas python-dotenv
 ```
 
 - To start the server run
