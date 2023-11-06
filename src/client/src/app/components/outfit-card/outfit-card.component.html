@@ -1,0 +1,20 @@
+<div
+  class="options-wrapper"
+  *ngIf="edit && outfit_id != ''"
+  [routerLink]="'/outfits/edit/' + outfit_id"
+>
+  <p>More options</p>
+  <img src="assets/sys-icons/right-arrow.svg" alt=">" />
+</div>
+<mat-grid-list cols="3" rowHeight="100px">
+  <mat-grid-tile
+    class="item-tile"
+    *ngFor="let tile of tiles; let i = index"
+    [colspan]="tile.cols"
+    [rowspan]="tile.rows"
+    [style.background]="tile.image == '' ? tile.color : 'transparent'"
+    (click)="onTileClick(i)"
+  >
+    <img class="item-image" src="{{ tile.image }}" alt="{{ tile.category }}" />
+  </mat-grid-tile>
+</mat-grid-list>

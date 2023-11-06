@@ -1,0 +1,41 @@
+<app-category-tabs
+  [categories]="categories"
+  (categoryChanged)="onCategoryChanged($event)"
+></app-category-tabs>
+<div class="wrapper">
+  <cdk-virtual-scroll-viewport
+    itemSize="100"
+    class="example-viewport"
+    minBufferPx="1000"
+    maxBufferPx="5000"
+    *ngIf="wardrobe.length > 0"
+  >
+    <mat-grid-list cols="4" rowHeight="1:1" gutterSize="10">
+      <mat-grid-tile *cdkVirtualFor="let item of wardrobe">
+        <img
+          [src]="item.image"
+          alt="Image"
+          class="example-item"
+          (click)="onItemClick(item)"
+        />
+      </mat-grid-tile>
+    </mat-grid-list>
+  </cdk-virtual-scroll-viewport>
+
+  <div class="no-data" *ngIf="wardrobe.length == 0">
+    <p>
+      Currently, you don't have any items in the wardrobe. Please click on the
+      add button to create a new item!
+    </p>
+  </div>
+
+  <div class="add-button-wrapper">
+    <img
+      src="assets/sys-icons/add-button.svg"
+      alt="Add"
+      class="add-button"
+      (click)="onAddClick()"
+    />
+  </div>
+</div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

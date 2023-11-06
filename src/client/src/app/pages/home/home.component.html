@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="main-content">
+    <div class="current-weather" *ngIf="forecast.length > 0">
+      <p id="current-location" (click)="onLocationClick()">
+        {{ currentLocation }}, Slovenia
+      </p>
+      <p>{{ forecast[0].temp }} °C</p>
+      <img
+        src="{{ 'assets/icons/' + forecast[0].icon + '.svg' }}"
+        alt="Current weather"
+      />
+    </div>
+    <div class="forecast">
+      <div class="forecast-wrapper">
+        <div *ngFor="let day of forecast">
+          <app-weather-card
+            [title]="day.title"
+            [temp]="day.temp"
+            [prec]="day.prec"
+            [wind]="day.wind"
+            [active]="day.active"
+            [icon]="day.icon"
+            (click)="onDayClick(day)"
+          ></app-weather-card>
+        </div>
+      </div>
+    </div>
+    <div
+      class="no-data"
+      *ngIf="forecast.length == 0 && clothesIcons.length == 0"
+    >
+      <h1>No data</h1>
+    </div>
+  </div>
+  <div class="icon-content" *ngIf="clothesIcons.length > 0">
+    <div *ngFor="let icon of clothesIcons">
+      <img
+        [matTooltip]="icon.tooltip"
+        matTooltipPosition="left"
+        matTooltipHideDelay="200"
+        src="{{ 'assets/clothes-icons/' + icon.icon + '.svg' }}"
+        alt="{{ icon.icon }}"
+      />
+    </div>
+  </div>
+</div>

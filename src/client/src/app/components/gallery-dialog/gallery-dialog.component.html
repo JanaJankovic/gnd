@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-1">
+    <img
+      src="assets/sys-icons/close-dialog.svg"
+      alt="Close"
+      (click)="closeDialog()"
+    />
+  </div>
+  <div class="col-11">Pick item</div>
+</div>
+<div class="wrapper">
+  <cdk-virtual-scroll-viewport
+    itemSize="100"
+    class="example-viewport"
+    minBufferPx="1000"
+    maxBufferPx="5000"
+    *ngIf="data.wardrobe.length > 0"
+  >
+    <mat-grid-list cols="4" rowHeight="1:1" gutterSize="5">
+      <mat-grid-tile *cdkVirtualFor="let item of data.wardrobe">
+        <img
+          [src]="item.image"
+          alt="Image"
+          class="example-item"
+          [ngClass]="{ 'example-item active': item.active }"
+          style="height: 100%"
+          (click)="onItemClick(item)"
+        />
+      </mat-grid-tile>
+    </mat-grid-list>
+  </cdk-virtual-scroll-viewport>
+</div>

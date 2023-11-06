@@ -1,0 +1,40 @@
+services:
+  server:
+    container_name: guess_and_dress_server
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    env_file: .env
+    ports:
+      - 5000:5000
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+
+  client:
+    container_name: guess_and_dress_client
+    build:
+      context: ./src/client
+      dockerfile: Dockerfile
+    ports:
+      - 4200:4200
+    networks:
+      - app-network
+
+  mongodb:
+    container_name: guess_and_dress_mongo
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - app-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,31 @@
+<div class="row" style="height: 100%; margin-left: 20px">
+  <div class="col-6">
+    <div class="register-header">
+      <div class="image-wrapper">
+        <a routerLink="/login"
+          ><img src="assets/sys-icons/back-button.svg" alt="back-button"
+        /></a>
+      </div>
+      <h1>Register</h1>
+    </div>
+    <div class="register-form">
+      <label for="fullame">Full name</label>
+      <input type="text" id="fullame" [(ngModel)]="user.fullname" />
+      <label for="email">E-mail</label>
+      <input type="email" id="email" [(ngModel)]="user.email" />
+      <label for="password">Password</label>
+      <input type="password" id="password" [(ngModel)]="user.password" />
+      <button id="register-button" (click)="onRegisterClick()">REGISTER</button>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="register-icon">
+      <img
+        src="{{ 'assets/icons/' + icon + '.svg' }}"
+        alt="Sunny"
+        id="weather-icon"
+      />
+      <label for="weather-icon">Maribor, Slovenia</label>
+    </div>
+  </div>
+</div>

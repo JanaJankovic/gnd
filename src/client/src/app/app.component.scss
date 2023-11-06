@@ -1,0 +1,30 @@
+.nav-list {
+  color: #171717;
+
+  li {
+    margin-bottom: 40px;
+    font-weight: 100;
+    font-size: 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .li-active {
+    text-decoration: underline;
+  }
+
+  a {
+    color: #171717 !important;
+    text-decoration: none;
+  }
+}
+
+.nav-header {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-weight: 100;
+  font-size: 30px;
+}

@@ -1,0 +1,25 @@
+<div class="weather-card">
+  <div class="weather-card-header" [ngClass]="{ 'active-header': active }">
+    <p>{{ title }}</p>
+  </div>
+  <div class="weather-card-body">
+    <img src="{{ 'assets/icons/' + icon + '.svg' }}" alt="weather" />
+    <table *ngIf="active">
+      <tr>
+        <td>Temp</td>
+        <td>{{ temp }}</td>
+        <td>°C</td>
+      </tr>
+      <tr>
+        <td>Prec</td>
+        <td>{{ prec }}</td>
+        <td>mm</td>
+      </tr>
+      <tr>
+        <td>Wind</td>
+        <td>{{ wind }}</td>
+        <td>km/h</td>
+      </tr>
+    </table>
+  </div>
+</div>

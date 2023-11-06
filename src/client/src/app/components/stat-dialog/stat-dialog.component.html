@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-1">
+    <img
+      src="assets/sys-icons/close-dialog.svg"
+      alt="Close"
+      (click)="closeDialog()"
+    />
+  </div>
+  <div class="col-11">Set up {{ data.stat | lowercase }}</div>
+</div>
+<div class="slider-wrapper">
+  <form [formGroup]="statSection">
+    <mat-slider class="slider-class" min="0" max="100" step="1">
+      <input matSliderThumb formControlName="value" />
+    </mat-slider>
+  </form>
+  <div class="titles">
+    <div>{{ titles.min }}</div>
+    <div>{{ titles.max }}</div>
+  </div>
+</div>

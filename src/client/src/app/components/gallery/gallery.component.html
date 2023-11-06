@@ -1,0 +1,30 @@
+<div class="gallery-wrapper" *ngIf="similarItems.length > 0">
+  <img
+    class="arrow"
+    src="assets/sys-icons/left-arrow.svg"
+    alt="left"
+    (click)="onArrowClick(true)"
+  />
+
+  <div *ngFor="let item of similarItems">
+    <img
+      src="{{ item.image }}"
+      alt="item-image"
+      class="item"
+      (click)="onItemClick(item)"
+    />
+  </div>
+
+  <img
+    class="arrow"
+    src="assets/sys-icons/right-arrow.svg"
+    alt="left"
+    (click)="onArrowClick(false)"
+  />
+</div>
+<div
+  style="margin-left: 20px; margin-top: 20px"
+  *ngIf="similarItems.length == 0"
+>
+  <p style="font-size: 13px">No similar items found!</p>
+</div>

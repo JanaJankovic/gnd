@@ -1,0 +1,77 @@
+.register-header {
+  display: flex;
+  justify-content: left;
+  margin-top: 20px;
+  margin-left: -10px;
+
+  h1 {
+    font-size: 28px;
+    margin: 0;
+  }
+
+  .image-wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+      height: 25px;
+      margin-right: 20px;
+    }
+  }
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  justify-content: center;
+  height: 80%;
+
+  input,
+  button {
+    width: 300px;
+    height: 40px;
+  }
+
+  input {
+    border: 2px #d9d9d9 solid;
+    padding-left: 7px;
+    margin-bottom: 20px;
+  }
+
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="email"]:focus,
+  input[type="url"]:focus,
+  textarea:focus {
+    border-color: #b16363;
+    outline: 0 none;
+  }
+
+  button {
+    border: none;
+    box-shadow: none;
+    background-color: #b16363;
+    color: white;
+    margin-top: 50px;
+  }
+}
+
+.register-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  img {
+    height: 200px;
+    margin-bottom: 25px;
+  }
+}
+
+.register-form,
+.register-icon {
+  margin-top: -50px;
+}

@@ -1,0 +1,68 @@
+<app-category-tabs
+  *ngIf="categories.length > 0"
+  [categories]="categories"
+  (categoryChanged)="onCategoryChanged($event)"
+></app-category-tabs>
+<div class="row" *ngIf="suggestion != undefined">
+  <div class="col-4">
+    <div class="stats">
+      <div class="row stat-item" *ngFor="let stat of suggestion.stats[index]">
+        <div class="col-10">
+          <div class="text-content">
+            <p>{{ stat.title }}</p>
+            <p>{{ stat.value }}</p>
+          </div>
+        </div>
+        <div class="col-2">
+          <img class="status-color" src="{{ stat.icon }}" alt="status" />
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="suggestion-menu">
+      <p
+        *ngFor="let item of submenu; let i = index"
+        [ngClass]="{ active: item.active }"
+        (click)="onSubmenuItemClick(i)"
+      >
+        {{ item.title }}
+      </p>
+    </div>
+    <button id="save-button" (click)="onSaveClick()">SAVE</button>
+  </div>
+  <div class="col-8">
+    <div class="outfit" *ngIf="submenuIndex == 0">
+      <app-outfit-card [tiles]="getTiles()"></app-outfit-card>
+    </div>
+    <div *ngIf="submenuIndex > 0">
+      <div class="item-image-wrapper" *ngIf="currentItem != null">
+        <img
+          src="{{
+            currentItem.image != null
+              ? currentItem.image
+              : 'assets/sys-icons/item-placeholder.svg'
+          }}"
+          alt="Image placeholder"
+        />
+      </div>
+      <p
+        *ngIf="currentItem != null"
+        style="margin: 50px 20px 0px 20px; font-size: 12px"
+      >
+        Similar items
+      </p>
+      <div *ngIf="currentItem != null" style="width: 100%">
+        <app-gallery
+          [itemObservable]="item$"
+          (itemClicked)="onItemClicked($event)"
+        ></app-gallery>
+      </div>
+      <div *ngIf="currentItem == null" class="no-item">
+        <p>
+          There are no available items that match current weather conditions!
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

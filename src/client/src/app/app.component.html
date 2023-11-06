@@ -1,0 +1,17 @@
+<div class="row" style="height: 100%">
+  <div class="col-2" style="background-color: #e4e4e4">
+    <h1 class="nav-header">Guess&Dress</h1>
+    <ul class="nav-list" *ngIf="visibleNavItems.length > 0">
+      <li
+        *ngFor="let item of visibleNavItems"
+        [ngClass]="{ 'li-active': item.active }"
+        (click)="onNavItemClick(item)"
+      >
+        <a [routerLink]="item.url">{{ item.text }}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-10" style="background-color: #f0f0f0">
+    <router-outlet></router-outlet>
+  </div>
+</div>

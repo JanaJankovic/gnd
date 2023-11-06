@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <img
+    src="assets/sys-icons/left-arrow.svg"
+    alt="left"
+    (click)="onArrowClick(true)"
+  />
+  <div class="categories" *ngIf="categories.length > 0">
+    <div
+      class="tab"
+      *ngFor="let category of categories"
+      [ngClass]="{ 'tab-active': category.active }"
+      (click)="onTabClick(category)"
+    >
+      <p>{{ category.title }}</p>
+    </div>
+  </div>
+  <img
+    src="assets/sys-icons/right-arrow.svg"
+    alt="left"
+    (click)="onArrowClick(false)"
+  />
+</div>

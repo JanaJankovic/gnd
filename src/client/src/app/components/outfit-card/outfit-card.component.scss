@@ -1,0 +1,27 @@
+mat-grid-tile {
+  cursor: pointer;
+}
+
+.item-image {
+  object-fit: scale-down;
+  height: 100%;
+}
+
+.options-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin: 10px 0px;
+  cursor: pointer;
+
+  p {
+    margin-right: 30px;
+    font-size: 13px;
+  }
+
+  img {
+    height: 20px;
+    margin-left: 10px;
+  }
+}

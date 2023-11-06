@@ -1,0 +1,29 @@
+.form-wrapper {
+  padding-top: 10px;
+  padding-left: 80px;
+
+  .item-dropdown {
+    width: 200px;
+    height: 40px;
+    background-color: transparent;
+    border: 2px #d9d9d9 solid;
+    color: #171717;
+    border-radius: 0;
+    text-align: left;
+  }
+
+  .category-list {
+    border-radius: 0;
+    width: 200px;
+  }
+}
+
+.row {
+  margin: 15px;
+  font-size: 28px;
+
+  img {
+    height: 24px;
+    cursor: pointer;
+  }
+}

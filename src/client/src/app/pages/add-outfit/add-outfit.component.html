@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-4">
+    <div class="header">
+      <div class="image-wrapper">
+        <a routerLink="/outfits"
+          ><img src="assets/sys-icons/back-button.svg" alt="back-button"
+        /></a>
+      </div>
+      <h1>{{ edit ? "Edit outfit" : "Add outfit" }}</h1>
+    </div>
+    <div class="form-wrapper">
+      <label for="season">Season</label>
+      <div id="season" ngbDropdown class="dropdown">
+        <button
+          ngbDropdownToggle
+          class="btn item-dropdown"
+          type="button"
+          id="dropdownMenuButton1"
+          aria-expanded="false"
+        >
+          {{ outfit.season }}
+        </button>
+        <ul
+          ngbDropdownMenu
+          aria-labelledby="dropdownMenuButton1"
+          class="category-list"
+        >
+          <li
+            *ngFor="let season of seasons; let i = index"
+            class="item-category"
+          >
+            <a ngbDropdownItem (click)="onSeasonClick(i)">{{ season }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <button *ngIf="!edit" id="add-button" (click)="onAddClick()">ADD</button>
+      <button *ngIf="edit" id="update-button" (click)="onUpdateClick()">
+        UPDATE
+      </button>
+      <button *ngIf="edit" id="delete-button" (click)="onDeleteClick()">
+        DELETE
+      </button>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="outfit-wrapper">
+      <app-outfit-card
+        [tiles]="tiles"
+        [edit]="false"
+        (tileClicked)="onTileClicked($event)"
+      ></app-outfit-card>
+    </div>
+  </div>
+</div>

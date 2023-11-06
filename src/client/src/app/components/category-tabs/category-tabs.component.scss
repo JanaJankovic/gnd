@@ -1,0 +1,31 @@
+.wrapper {
+  padding: 20px 40px 20px 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  img {
+    height: 30px;
+    cursor: pointer;
+  }
+
+  .categories {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    .tab {
+      width: 130px;
+      padding: 10px;
+      cursor: pointer;
+      p {
+        margin: 0;
+        font-size: 13px;
+        text-align: center;
+      }
+    }
+
+    .tab-active {
+      background-color: #e4e4e4;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-2">
+    <img
+      src="assets/sys-icons/close-dialog.svg"
+      alt="Close"
+      (click)="closeDialog()"
+    />
+  </div>
+  <div class="col-10">Set location</div>
+</div>
+<div class="form-wrapper">
+  <label for="location">Location</label>
+  <div id="location" ngbDropdown class="dropdown">
+    <button
+      ngbDropdownToggle
+      class="btn item-dropdown"
+      type="button"
+      id="dropdownMenuButton1"
+      aria-expanded="false"
+    >
+      {{ currentLocation }}
+    </button>
+    <ul
+      ngbDropdownMenu
+      aria-labelledby="dropdownMenuButton1"
+      class="category-list"
+    >
+      <li
+        *ngFor="let location of locations; let i = index"
+        class="item-category"
+      >
+        <a ngbDropdownItem (click)="onLocationClick(i)">{{ location }}</a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<app-category-tabs
+  [categories]="seasons"
+  (categoryChanged)="onSeasonChanged($event)"
+></app-category-tabs>
+<div class="wrapper">
+  <cdk-virtual-scroll-viewport
+    itemSize="100"
+    class="example-viewport"
+    minBufferPx="1000"
+    maxBufferPx="5000"
+    *ngIf="outfits.length > 0"
+  >
+    <div class="outfit-card-wrapper" *cdkVirtualFor="let outfit of outfits">
+      <app-outfit-card
+        [edit]="true"
+        [tiles]="outfit.tiles"
+        [outfit_id]="outfit._id"
+        class="outfit-item"
+      ></app-outfit-card>
+    </div>
+  </cdk-virtual-scroll-viewport>
+
+  <div class="no-data" *ngIf="outfits.length == 0">
+    <p>
+      {{
+        loading
+          ? "Loading..."
+          : "Currently, you don't have any saved outfits. Please click on the add button to create a new item!"
+      }}
+    </p>
+  </div>
+
+  <div class="add-button-wrapper">
+    <img
+      src="assets/sys-icons/add-button.svg"
+      alt="Add"
+      class="add-button"
+      (click)="onAddClick()"
+    />
+  </div>
+</div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

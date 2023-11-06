@@ -1,0 +1,16 @@
+h1 {
+  font-size: 28px;
+  margin: 30px;
+}
+
+.loading {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-loading {
+  margin-left: 30px;
+}

@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "guess-and-dress"
+version = "0.1.0"
+description = ""
+authors = ["Tadej Lahovnik <tadej.lahovnik@student.um.si>", "Jana Janković <jana.jankovic@student.um.si>"]
+readme = "README.md"
+packages = [{include = "guess_and_dress"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pandas = "1.4.2"
+numpy = "=1.23.5"
+dvc = "2.49.0"
+python-dotenv = "^1.0.0"
+great-expectations = "=0.16.1"
+evidently = "^0.3.2"
+typing-extensions = "4.5.0"
+mlflow = "=2.3"
+fastapi = "^0.92.0"
+uvicorn = {extras = ["standard"], version = "^0.20.0"}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.1"
+httpx = "^0.24.0"
+black = "^23.1.0"
+jupyter = "^1.0.0"
+flask = "^2.3.2"
+flask-cors = "^3.0.10"
+pymongo = "^4.3.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

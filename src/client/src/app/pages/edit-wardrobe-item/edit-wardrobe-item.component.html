@@ -1,0 +1,66 @@
+<div class="header">
+  <div class="title-wrapper">
+    <div class="image-wrapper">
+      <a routerLink="/wardrobe"
+        ><img src="assets/sys-icons/back-button.svg" alt="back-button"
+      /></a>
+    </div>
+    <h1>Add wardrobe item</h1>
+  </div>
+  <div class="image-wrapper">
+    <img
+      src="assets/sys-icons/delete-button.svg"
+      alt="delete-button"
+      (click)="onButtonDelete()"
+    />
+  </div>
+</div>
+<div class="row">
+  <div class="col-4">
+    <div *ngIf="item != undefined" class="info-wrapper">
+      <h1>{{ item.category }}</h1>
+      <hr />
+      <div class="stats">
+        <div
+          class="row stat-item"
+          *ngFor="let stat of stats; let i = index"
+          (click)="openDialog(i)"
+        >
+          <div class="col-10">
+            <p>{{ stat.title }}</p>
+          </div>
+          <div class="col-2">
+            <img class="status-color" src="{{ stat.icon }}" alt="status" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="item-image-wrapper" *ngIf="item != undefined">
+      <img
+        src="{{
+          item.image != ''
+            ? item.image
+            : 'assets/sys-icons/item-placeholder.svg'
+        }}"
+        alt="Image placeholder"
+        (click)="onImageClick()"
+      />
+      <input
+        #FileSelectInputDialog
+        type="file"
+        style="visibility: hidden"
+        (change)="onFileSelected($event)"
+      />
+    </div>
+  </div>
+</div>
+
+<p style="margin: 50px 20px 0px 20px">Similar items</p>
+<div *ngIf="item != undefined" style="width: 100%">
+  <app-gallery
+    [item]="item"
+    (itemClicked)="onItemClicked($event)"
+  ></app-gallery>
+</div>

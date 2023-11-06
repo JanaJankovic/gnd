@@ -1,0 +1,24 @@
+<div class="row" style="margin-left: 20px">
+  <h1>User details</h1>
+  <div class="col-4">
+    <div class="user-form">
+      <label for="fullname">Full name</label>
+      <input type="text" id="fullname" [(ngModel)]="user.fullname" />
+      <label for="email">E-mail</label>
+      <input type="email" id="email" [(ngModel)]="user.email" />
+      <label for="password">Password</label>
+      <input type="password" id="password" [(ngModel)]="user.password" />
+      <button class="update-button" (click)="onUpdateClick()">UPDATE</button>
+      <button class="delete-button" (click)="onDeleteClick()">DELETE</button>
+    </div>
+  </div>
+  <div class="col-8">
+    <img src="{{ user.image }}" alt="Image placeholder" (click)="onImageClick()" />
+    <input
+      #FileSelectInputDialog
+      type="file"
+      style="visibility: hidden"
+      (change)="onFileSelected($event)"
+    />
+  </div>
+</div>

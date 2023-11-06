@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col-4">
+    <div class="header">
+      <div class="image-wrapper">
+        <a routerLink="/wardrobe"
+          ><img src="assets/sys-icons/back-button.svg" alt="back-button"
+        /></a>
+      </div>
+      <h1>Add wardrobe item</h1>
+    </div>
+    <div class="form-wrapper">
+      <label for="category">Category</label>
+      <div id="category" ngbDropdown class="dropdown">
+        <button
+          ngbDropdownToggle
+          class="btn item-dropdown"
+          type="button"
+          id="dropdownMenuButton1"
+          aria-expanded="false"
+        >
+          {{ item.category }}
+        </button>
+        <ul
+          ngbDropdownMenu
+          aria-labelledby="dropdownMenuButton1"
+          class="category-list"
+        >
+          <li
+            *ngFor="let category of categories; let i = index"
+            class="item-category"
+          >
+            <a ngbDropdownItem (click)="onCategoryClick(i)">{{ category }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="item.category == 'Accessories'">
+        <label id="label-subcategory" for="subcategory">Subcategory</label>
+        <div id="subcategory" ngbDropdown class="dropdown">
+          <button
+            ngbDropdownToggle
+            class="btn item-dropdown"
+            type="button"
+            id="dropdownMenuButton2"
+            aria-expanded="false"
+          >
+            {{ item.subcategory }}
+          </button>
+          <ul
+            ngbDropdownMenu
+            aria-labelledby="dropdownMenuButton1"
+            class="category-list"
+          >
+            <li
+              *ngFor="let subcat of subcategories; let i = index"
+              class="item-category"
+            >
+              <a ngbDropdownItem (click)="onSubcategoryClick(i)">{{
+                subcat
+              }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div
+          class="row stat-item"
+          *ngFor="let stat of stats; let i = index"
+          (click)="openDialog(i)"
+        >
+          <div class="col-10">
+            <p>{{ stat.title }}</p>
+          </div>
+          <div class="col-2">
+            <img class="status-color" src="{{ stat.icon }}" alt="status" />
+          </div>
+        </div>
+      </div>
+
+      <button id="add-button" (click)="onAddClick()">ADD</button>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="item-image-wrapper">
+      <img
+        src="{{
+          item.image != ''
+            ? item.image
+            : 'assets/sys-icons/item-placeholder.svg'
+        }}"
+        alt="Image placeholder"
+        (click)="onImageClick()"
+      />
+      <input
+        #FileSelectInputDialog
+        type="file"
+        style="visibility: hidden"
+        (change)="onFileSelected($event)"
+      />
+    </div>
+  </div>
+</div>
