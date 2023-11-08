@@ -23,7 +23,7 @@ Project is simplified to just front-end and back-end without ML. To start the pr
 - Before starting the server make sure you have installed following packages
 
 ```
-pip install Flask Flask-Cors pymongo pandas python-dotenv
+pip install Flask Flask-Cors pymongo pandas python-dotenv requests
 ```
 
 - To start the server run

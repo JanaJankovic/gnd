@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
     fullname: '',
     email: '',
     password: '',
+    year: 2000,
     image: 'assets/sys-icons/image-placeholder.svg',
   };
 
@@ -29,6 +30,13 @@ export class RegisterComponent implements OnInit {
   }
 
   async onRegisterClick() {
+    console.log(this.user.year);
+    if (this.isNotValid()) {
+      alert('Fill out all inputs');
+      return;
+    }
+    if (!this.validateYear()) return;
+
     let response = await lastValueFrom(this.networkSerivce.register(this.user));
     if (response != undefined && response.error != undefined) {
       alert(response.error);
@@ -36,5 +44,32 @@ export class RegisterComponent implements OnInit {
     if (response != undefined && response.acknowledged != undefined) {
       this.router.navigate(['/login']);
     }
+  }
+
+  isNotValid() {
+    return (
+      this.user.fullname == '' ||
+      this.user.email === '' ||
+      this.user.password == ''
+    );
+  }
+
+  validateYear(): boolean {
+    if (this.user.year < 0) {
+      alert('Year must be positive number');
+      return false;
+    }
+
+    if (this.user.year >= 0 && this.user.year <= 1950) {
+      alert('Year must bigger than 1940');
+      return false;
+    }
+
+    if (this.user.year >= 2020) {
+      alert('Year must lessr than 2020');
+      return false;
+    }
+
+    return true;
   }
 }

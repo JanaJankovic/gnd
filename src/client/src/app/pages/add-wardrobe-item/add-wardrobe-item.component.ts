@@ -48,6 +48,7 @@ export class AddWardrobeItemComponent implements OnInit {
     waterproof: 0,
     windproof: 0,
     user_id: 0,
+    preference: 0,
   };
 
   constructor(
@@ -125,6 +126,8 @@ export class AddWardrobeItemComponent implements OnInit {
   }
 
   async onAddClick() {
+    if (!this.isPreferenceValid()) return;
+
     if (this.item.category != '') {
       const response = await lastValueFrom(
         this.networkService.createWardrobeItem(this.item)
@@ -139,5 +142,19 @@ export class AddWardrobeItemComponent implements OnInit {
     } else {
       alert('Pick category');
     }
+  }
+
+  isPreferenceValid() {
+    if (this.item.preference < 0) {
+      alert('Preference can only be positive');
+      return false;
+    }
+
+    if (this.item.preference > 5) {
+      alert('Preference can be maximum 5');
+      return false;
+    }
+
+    return true;
   }
 }
